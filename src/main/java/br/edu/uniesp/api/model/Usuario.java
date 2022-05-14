@@ -1,19 +1,38 @@
 package br.edu.uniesp.api.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import java.io.Serializable;
 
 @Entity
+@Getter
+@Setter
+@Table(name = "tb_usuario")
 public class Usuario implements Serializable {
 
     @Id
-    @Column(length = 11)
+    @Column(name = "cpf", length = 11)
     private String cpf;
+
+    @Column(name = "usuario_nome", length = 200)
+    @NotEmpty
     private String nomeCompleto;
+
+    @Column(name = "usuario_email")
+    @Email
     private String email;
+
+    @Column(name = "usuario_nascimento")
     private String dataNascimento;
+
+    @Column(name = "senha")
     private String senha;
 
     public Usuario(String cpf, String nomeCompleto, String email, String dataNascimento, String senha) {
@@ -26,45 +45,6 @@ public class Usuario implements Serializable {
 
     public Usuario(){}
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 
     /* TODO
         public String confirmarSenha(senha) {
@@ -72,5 +52,5 @@ public class Usuario implements Serializable {
                 return 'Senhas conferem';
             }
      }
-*/
+    */
 }

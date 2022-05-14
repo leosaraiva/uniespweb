@@ -30,13 +30,6 @@ public class GeneroResource {
 
     @PutMapping
     public Genero atualizarGenero(@RequestBody Genero genero) throws Exception {
-
         return service.atualizarGenero(genero);
-
     }
-
-
-
-
-
 }

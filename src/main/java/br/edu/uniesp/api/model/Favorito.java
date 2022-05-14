@@ -1,45 +1,27 @@
 package br.edu.uniesp.api.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import lombok.Data;
 
 @Entity
-public class Favorito implements Serializable {
+@Table(name = "favoritos")
+@Data
+public class Favorito {
 
     @Id
-    @GeneratedValue
-    private Integer id;
-    private Filme filme;
-    private Usuario usuario;
-    private String titulo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
+    @OneToMany
+    private List<Filme> favoritos = new ArrayList<>();
 
-    public Favorito() {
-    }
-
-    public Filme getFilme() {
-        return filme;
-    }
-
-    public void setFilme(Filme filme) {
-        this.filme = filme;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Integer getId() { return id; }
-
-    public void setId(Integer id) { this.id = id; }
-
-    public String getTitulo() { return titulo; }
-
-    public void setTitulo(String titulo) { this.titulo = titulo; }
 }

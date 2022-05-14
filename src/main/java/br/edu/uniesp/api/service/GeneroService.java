@@ -15,7 +15,7 @@ public class GeneroService {
 
     public Genero salvarGenero(Genero genero) { return repository.save(genero); }
 
-    public Genero w (Genero genero) throws Exception {
+    public Genero atualizarGenero(Genero genero) throws Exception {
         if (genero.getId() == null) {
             throw new Exception("ID não encontrado");
         }

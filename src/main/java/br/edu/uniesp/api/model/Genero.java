@@ -1,39 +1,30 @@
 package br.edu.uniesp.api.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.Set;
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
+@Table(name = "tb_genero")
 public class Genero implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "genero_id")
     private Integer id;
-    private String nome, descricao;
 
-    public Integer getId() {
-        return id;
-    }
+    @Column(name = "genero_nome")
+    private String nome;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    @Column(name = "genero_descricao")
+    private String descricao;
 
-    public String getNome() {
-        return nome;
-    }
+    @OneToMany(mappedBy = "genero")
+    private Set<Filme> listaFilmes;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 }
