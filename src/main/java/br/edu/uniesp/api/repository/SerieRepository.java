@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SerieRepository extends JpaRepository<Serie, Integer> {
-    List<Serie> findByTituloSerie(String titulo);
+public interface SerieRepository extends JpaRepository<Serie,Integer> {
+    List<Serie> findByTitulo(String titulo);
     @Query("select s.genero from Serie s where " +
             "s.genero.nome =:genero")
-    List<Serie> buscarPorGeneroASerie(@Param("genero") String genero);
+    List<Serie> buscarPorGenero(@Param("genero") String genero);
 }

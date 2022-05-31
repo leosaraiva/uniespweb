@@ -36,5 +36,9 @@ public class FilmeResource {
     public Filme atualizar(@RequestBody Filme filme) throws Exception {
         return service.atualizar(filme);
     }
+    @GetMapping("/titulo/{titulo}")
+    public List<Filme> ListarFilmePorTitulo(@PathVariable String titulo){
+        return service.listarFilmePorTitulo(titulo);
+    }
 
 }

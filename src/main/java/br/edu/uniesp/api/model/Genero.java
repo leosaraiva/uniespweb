@@ -1,5 +1,6 @@
 package br.edu.uniesp.api.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "tb_genero")
+@Data
 public class Genero implements Serializable {
 
     @Id
@@ -26,5 +28,8 @@ public class Genero implements Serializable {
 
     @OneToMany(mappedBy = "genero")
     private Set<Filme> listaFilmes;
+
+    @OneToMany(mappedBy = "genero")
+    private Set<Serie> listaSerie;
 
 }

@@ -1,5 +1,6 @@
 package br.edu.uniesp.api.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 @Table(name = "tb_filme")
+@Data
 public class Filme implements Serializable {
 
     @Id

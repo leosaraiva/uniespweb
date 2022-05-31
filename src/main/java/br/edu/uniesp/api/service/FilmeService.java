@@ -23,13 +23,13 @@ public class FilmeService {
         }
         return repository.save(filme);
     }
-
-    public void deletar(int id){
-        repository.deleteById(id);
-    }
-
     public List<Filme> listar(){
         return repository.findAll();
     }
-
+    public void deletar(int id){
+        repository.deleteById(id);
+    }
+    public List<Filme> listarFilmePorTitulo(String titulo){
+        return repository.findByTitulo(titulo);
+    }
 }
